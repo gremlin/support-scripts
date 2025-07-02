@@ -20,9 +20,9 @@ echo "Copying cron logs and database to ${debug_dir}"
 cp database-data/shared-local-instance.db "${debug_dir}/shared-local-instance.db"
 cp /var/log/cron "${debug_dir}/cron.log"
 
-docker compose start
-popd
-
 pushd "${tmpdir}"
 tar czf /tmp/gremlin-debug.tar.gz gremlin-debug
+popd
+
+docker compose start
 popd
