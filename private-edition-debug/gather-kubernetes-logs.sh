@@ -17,7 +17,7 @@ for namespace in $(kubectl get namespaces | grep "gremlin" | awk ' {{ print $1 }
 done
 
 
-echo "Copying database to ${debug_dir}"
+echo "Copying logs to ${debug_dir}"
 #cp database-data/shared-local-instance.db "${debug_dir}/shared-local-instance.db"
 
 tar czf /tmp/gremlin-debug.tar.gz gremlin-debug
