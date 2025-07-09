@@ -11,7 +11,7 @@ pushd ${tmpdir}
 
 for namespace in $(kubectl get namespaces | grep "gremlin" | awk ' {{ print $1 }}'); do
     echo "checking namespace $namespace"
-    for pod in $(kubectl get pods -n "$namespace" | tail -n +2 | awk ' {{ print $1 }}'); do
+    for pod in $(kubectl get pods -n "$namespace" | tail -n +2 | awk 'NR > 1 {{ print $1 }}'); do
       kubectl logs -n $namespace $pod > "${debug_dir}/$pod.log"
     done
 done
